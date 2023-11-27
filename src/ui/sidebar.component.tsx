@@ -114,24 +114,26 @@ import { useAuth } from '@/hooks/useAuth';
             Khipo
           </Text>
         </Flex>
-        {listProjects.projects && listProjects.totalItems > 0 && listProjects.projects.map((item) => (
-            <Button  
-            p="4"
-            mx="4"
-            w={48}
-            borderRadius="lg"
-            role="group"
-            cursor="pointer"
-            backgroundColor='var(--gray-100)'
-            my={2}
-            _hover={{
-              bg: 'cyan.400',
-              color: 'white',
-            }}
-             key={item.id}>
-                <Link href={`/projects/${item.id}?id=${item.id}`}>{item.name}</Link>
-            </Button>
-        ))}
+          <Box h={"438"} overflowY="scroll" overflowX="hidden" >
+            {listProjects.projects && listProjects.totalItems > 0 && listProjects.projects.map((item) => (
+                <Button  
+                p="4"
+                mx="4"
+                w={48}
+                borderRadius="lg"
+                role="group"
+                cursor="pointer"
+                backgroundColor='var(--gray-100)'
+                my={2}
+                _hover={{
+                  bg: 'cyan.400',
+                  color: 'white',
+                }}
+                key={item.id}>
+                    <Link href={`/projects/${item.id}?id=${item.id}`}>{item.name}</Link>
+                </Button>
+            ))}
+          </Box>
         </Box>
         <Box 
         my={8}

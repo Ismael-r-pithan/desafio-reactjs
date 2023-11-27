@@ -15,6 +15,17 @@
   --success-500: #12b76a;
 }
 
+::-webkit-scrollbar-track {
+  background-color: #f4f4f4;
+}
+::-webkit-scrollbar {
+  width: 6px;
+  background: #f4f4f4;
+}
+::-webkit-scrollbar-thumb {
+  background: #dad7d7;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
