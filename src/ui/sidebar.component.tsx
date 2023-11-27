@@ -34,6 +34,7 @@ import { AppError } from '@/lib/app-error';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/hooks/useAuth';
+import { AddIcon } from '@chakra-ui/icons';
   
   interface SidebarProps extends BoxProps {
     listProjects: ListProjectDto;
@@ -125,6 +126,7 @@ import { useAuth } from '@/hooks/useAuth';
                 cursor="pointer"
                 backgroundColor='var(--gray-100)'
                 my={2}
+                rightIcon={<AddIcon _hover={{ transform: 'scale(2)', color: 'gray.100' }} fontSize={'0.5rem'} position={"absolute"} right={3} top={4}/>} 
                 _hover={{
                   bg: 'cyan.400',
                   color: 'white',
