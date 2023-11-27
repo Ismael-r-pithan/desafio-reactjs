@@ -132,7 +132,7 @@ import { AddIcon } from '@chakra-ui/icons';
                   color: 'white',
                 }}
                 key={item.id}>
-                    <Link href={`/projects/${item.id}?id=${item.id}`}>{item.name}</Link>
+                    <Link href={`/projects/${item.id}`}>{item.name}</Link>
                 </Button>
             ))}
           </Box>
