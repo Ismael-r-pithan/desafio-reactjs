@@ -33,6 +33,7 @@ import { handleCreateProject } from '@/api/create-project';
 import { AppError } from '@/lib/app-error';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import { useAuth } from '@/hooks/useAuth';
   
   interface SidebarProps extends BoxProps {
     listProjects: ListProjectDto;
@@ -54,11 +55,11 @@ import Link from 'next/link';
     const finalRef = React.useRef(null)
     const [ isLoading, setIsLoading ] = useState(false);
     const toast = useToast();
+    const { signOut } = useAuth();
 
     useEffect(() => {
        
       }, [id]); 
-  
 
     const { handlePage, listTasks, totalPages } = useListTasks(+id);
 
@@ -133,12 +134,15 @@ import Link from 'next/link';
         ))}
         </Box>
         <Box 
-        bottom={16}
-        mx={6}
+        my={8}
+        mx={4}
         position='absolute'
-        
+        bottom={4}
         >
            <Button onClick={onOpen} width={48}>+ Novo Projeto</Button>
+           <Button bgColor={"red.200"} mt={1} onClick={async () => { 
+            await signOut()
+           }} width={48}><Link href={"/"}>Logout</Link></Button>
         <Modal
             initialFocusRef={initialRef}
             finalFocusRef={finalRef}
@@ -189,7 +193,7 @@ import Link from 'next/link';
           </ModalFooter>
         </ModalContent>
       </Modal>
-        </Box>
+      </Box>
       </Box>
       <Box ml={{ base: 'auto', md: 60, xl: 80 }}  p="4">
         <SimpleGrid mt={16} spacing={16} columns={{ base: 1, md: 3 }} maxW="1280">
