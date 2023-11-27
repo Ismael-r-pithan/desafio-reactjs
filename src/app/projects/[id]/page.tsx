@@ -66,6 +66,14 @@ useEffect(() => {
     setIsLoading(true);
     try {
       await handleCreateTask(+id, data);
+      toast({
+        title: 'Tarefa criada com sucesso',
+        duration: 9000,
+        isClosable: true,
+        colorScheme: 'blue',
+        position: 'top'
+    }) 
+      onClose()
     } catch (error) {
       const isAppError = error instanceof AppError;
       const title = isAppError ? error.message : "Não foi possível criar a tarefa, Tente novamente mais tarde";
@@ -142,8 +150,8 @@ useEffect(() => {
                 <Controller
                     name="status"
                     control={control}
-                    render={({ field }) => (
-                      <Select isRequired name='status' placeholder='Select option'>
+                    render={({ field: { onChange, value } }) => (
+                      <Select onChange={onChange} value={value} isRequired name='status' placeholder='Select option'>
                       <option value='PENDENTE'>Pendente</option>
                       <option value='EM_ANDAMENTO'>Em Andamento</option>
                       <option value='CONCLUIDA'>Concluida</option>
@@ -158,10 +166,18 @@ useEffect(() => {
                 <Controller
                     name="tagIds"
                     control={control}
-                    render={({ field  }) => (
+                    render={({ field: { onChange, value }  }) => (
                       <Stack spacing={5} direction='row'>
                         {listTags.tags.map(tag => (
                           <Checkbox
+                            onChange={(e) => {
+                              const isChecked = e.target.checked;
+                              const updatedValue = isChecked
+                                ? [...(value || []), tag.id] 
+                                : (value || []).filter((id) => id !== tag.id);
+                              onChange(updatedValue);
+                            }}
+                            value={String(value?.includes(tag.id) || false)}
                             isRequired
                             key={tag.id}
                            >
