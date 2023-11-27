@@ -30,6 +30,7 @@ export type SignInProps = {
 }
 
 import { useAuth } from "@/hooks/useAuth";
+import Link from 'next/link';
 
 
 
@@ -124,6 +125,7 @@ export default function SignInScreen() {
         >
           Entrar
         </Button>
+        <Link href={'/sign-up'}>Não possui conta ? Cadastre-se</Link>
       </Stack>
     </Flex>
   )

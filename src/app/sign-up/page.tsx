@@ -24,6 +24,7 @@ import { signUpValidator } from '@/validators/sign-up.validator';
 import { handleSignUp } from '@/api/sign-up';
 import { AppError } from '@/lib/app-error';
 import { useToast } from '@chakra-ui/react';
+import Link from 'next/link';
 
 
 
@@ -142,6 +143,7 @@ export default function SignupScreen() {
         >
           Cadastrar
         </Button>
+        <Link href={'/'}>Já possui conta ? Entre</Link>
       </Stack>
     </Flex>
   )
